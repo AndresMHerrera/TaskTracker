@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  // background-color: orange;
+  width: 100%;
+  justify-content: center;
+
+  .form-container {
+    width: 50%;
+    // background-color: orchid;
+
+    form {
+      width: 100%;
+
+      mat-form-field {
+        width: 100%;
+        mat-label {
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    .missing-creadentials-container {
+      display: flex;
+      justify-content:flex-start;
+      a {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+
+a {
+  text-decoration: none;
+  // font-size: 12px;
+  // line-height: 20px;
+  // color: darkgrey;
+}
+a:hover {
+  color: #ffc107;
+}
