@@ -19,9 +19,13 @@
       }
     }
 
+    .button-container {
+      text-align: right;
+    }
+
     .missing-creadentials-container {
       display: flex;
-      justify-content:flex-start;
+      justify-content:flex-end;
       a {
         cursor: pointer;
       }

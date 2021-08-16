@@ -11,10 +11,14 @@
         <input type="password" matInput>
       </mat-form-field>
 
-      <button mat-raised-button color="accent" type="submit"> log in </button>
-
       <div class="missing-creadentials-container">
-        <a> forgot your password? </a>
+        <a (click)="onSignUp()"> Forgot password? </a>
+      </div>
+
+      <br>
+
+      <div class="button-container">
+        <button mat-raised-button color="accent" type="submit"> log in </button>
       </div>
     </form>
   </div>
