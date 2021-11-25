@@ -22,6 +22,7 @@ export class LoginPageComponent implements OnInit {
         this.loginService.login().subscribe(
             (result) => {
                 console.log(result);
+                this.router.navigate([APP_ROUTES.dashboard]);
             },
             (error) => {
                 console.error("ERROR");

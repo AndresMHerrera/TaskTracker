@@ -1,3 +1,4 @@
+import { DashboardRouter } from './modules/dashboard/dashboard-router';
 import { LoginPageComponent } from './modules/login/pages/login-page/login-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Route } from '@angular/router';
@@ -18,6 +19,7 @@ const fallbackRoute: Route = {
 const routes: Routes = [
     ...LoginRouterConfig,
     ...SignupRouterConfig,
+    ...DashboardRouter,
     indexRoute,
     fallbackRoute
 ];
