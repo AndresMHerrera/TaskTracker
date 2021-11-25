@@ -1,6 +1,8 @@
 import { LoginPageComponent } from './modules/login/pages/login-page/login-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Route } from '@angular/router';
+import { LoginRouterConfig } from './modules/login/login-router.config';
+import { SignupRouterConfig } from './modules/signup/signup-router.config';
 
 const indexRoute: Route = {
   path: '',
@@ -14,17 +16,10 @@ const fallbackRoute: Route = {
 
 
 const routes: Routes = [
-  {
-      path: 'login',
-      component: LoginPageComponent
-  },
-  // ...signupRouterConfig,
-  // {
-  //     path: 'home',
-  //     component: HomeComponent
-  // },
-  indexRoute,
-  fallbackRoute
+    ...LoginRouterConfig,
+    ...SignupRouterConfig,
+    indexRoute,
+    fallbackRoute
 ];
 @NgModule({
   imports: [
