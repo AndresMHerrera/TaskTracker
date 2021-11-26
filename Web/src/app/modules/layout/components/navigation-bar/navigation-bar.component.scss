@@ -1,0 +1,19 @@
+ul {
+    width: 100%;
+    list-style: none;
+    padding: 0px;
+
+    li {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        cursor: pointer;
+    }
+    li:hover {
+        background-color: lightblue
+    }
+}
+
+.active {
+    background-color: lightblue;
+}

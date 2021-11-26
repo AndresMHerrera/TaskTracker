@@ -1,3 +1,4 @@
+import { LayoutModule } from './../layout/layout.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -17,7 +18,8 @@ import { AuthorizedPageComponent } from './pages/authorized-page/authorized-page
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    LayoutModule
   ]
 })
 export class AuthorizedModule { }
