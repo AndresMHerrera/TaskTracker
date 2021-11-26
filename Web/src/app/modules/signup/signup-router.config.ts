@@ -1,4 +1,4 @@
-import { APP_ROUTES } from './../../app-routes';
+import { APP_ROUTES } from '../shared/services/navigation/app-routes';
 
 import { Route } from '@angular/router';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';

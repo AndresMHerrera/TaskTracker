@@ -1,5 +1,5 @@
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
-import { APP_ROUTES } from './../../app-routes';
+import { APP_ROUTES } from '../shared/services/navigation/app-routes';
 
 import { Route } from "@angular/router";
 

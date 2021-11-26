@@ -1,7 +1,6 @@
-import { APP_ROUTES } from './../../../../app-routes';
+import { NavigationService } from './../../../shared/services/navigation/navigation.service';
 import { LoginService } from './../../services/login-service/login.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login-page',
@@ -9,20 +8,20 @@ import { Router } from '@angular/router';
     styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
-    constructor(private loginService: LoginService, private router: Router) {}
+    constructor(private loginService: LoginService, private navigation: NavigationService) {}
 
     ngOnInit(): void {}
 
     onSignUp() {
         this.loginService.test();
-        this.router.navigate([APP_ROUTES.signup])
+        this.navigation.gotToSignup();
     }
 
     onLogin() {
         this.loginService.login().subscribe(
             (result) => {
-                console.log(result);
-                this.router.navigate([APP_ROUTES.dashboard]);
+                console.log('ok');
+                this.navigation.gotToDashboard();
             },
             (error) => {
                 console.error("ERROR");
