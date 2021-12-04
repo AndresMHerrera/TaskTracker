@@ -1,3 +1,4 @@
+import { ProjectsPageComponent } from './modules/projects/pages/projects-page/projects-page.component';
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
 import { AuthorizedPageComponent } from './modules/authorized/pages/authorized-page/authorized-page.component';
 import { LoginPageComponent } from './modules/login/pages/login-page/login-page.component';
@@ -39,6 +40,10 @@ const routes: Routes = [
             {
                 path: APP_ROUTES.dashboard,
                 component: DashboardPageComponent
+            },
+            {
+                path: APP_ROUTES.projects,
+                component: ProjectsPageComponent
             }
         ]
     },

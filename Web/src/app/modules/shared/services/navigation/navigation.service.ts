@@ -8,10 +8,15 @@ import { Router } from '@angular/router';
 export class NavigationService {
     constructor(private router: Router) {}
 
+    public gotToSignup(): Promise<boolean> {
+        return this.router.navigate([APP_ROUTES.signup]);
+    }
+
     public gotToDashboard(): Promise<boolean> {
         return this.router.navigate([APP_ROUTES.auth + '/' + APP_ROUTES.dashboard]);
     }
-    public gotToSignup(): Promise<boolean> {
-        return this.router.navigate([APP_ROUTES.signup]);
+
+    public goToProjects(): Promise<boolean> {
+        return this.router.navigate([APP_ROUTES.auth + '/' + APP_ROUTES.projects]);
     }
 }

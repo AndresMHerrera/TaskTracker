@@ -1,6 +1,7 @@
 import { NavigationService } from './../../../shared/services/navigation/navigation.service';
 import { TabModel } from './../../../layout/models/tab.model';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-authorized-page',
@@ -14,8 +15,8 @@ export class AuthorizedPageComponent implements OnInit {
     constructor(private navService: NavigationService) {}
 
     ngOnInit(): void {
-        this.tabs.push(new TabModel('Dashboard', this.navService.gotToDashboard));
-        this.tabs.push(new TabModel('Projects', this.navService.gotToDashboard));
-        this.tabs.push(new TabModel('Tickets', this.navService.gotToDashboard));
+        this.tabs.push(new TabModel('Dashboard', () => this.navService.gotToDashboard()));
+        this.tabs.push(new TabModel('Projects', () => this.navService.goToProjects()));
+        this.tabs.push(new TabModel('Tickets', () => this.navService.gotToDashboard()));
     }
 }
