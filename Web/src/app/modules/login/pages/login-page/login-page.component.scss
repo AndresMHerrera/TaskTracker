@@ -1,45 +1,45 @@
+@import "../../../../../styles.scss";
+
 .container {
-  display: flex;
-  // background-color: orange;
-  width: 100%;
-  justify-content: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  .form-container {
-    width: 50%;
-    // background-color: orchid;
+    .form-container {
+        width: 40%;
 
-    form {
-      width: 100%;
-
-      mat-form-field {
-        width: 100%;
-        mat-label {
-          text-transform: capitalize;
+        .title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 35px;
         }
-      }
+        form {
+            width: 100%;
+
+            mat-form-field {
+                width: 100%;
+                mat-label {
+                    text-transform: capitalize;
+                }
+            }
+        }
+
+        .button-container {
+            text-align: right;
+        }
+
+        .missing-creadentials-container {
+            display: flex;
+            justify-content: flex-end;
+            a {
+                cursor: pointer;
+                text-decoration: none;
+            }
+            a:hover {
+                color: map-get($map: $colors, $key: primary)
+            }
+        }
     }
-
-    .button-container {
-      text-align: right;
-    }
-
-    .missing-creadentials-container {
-      display: flex;
-      justify-content:flex-end;
-      a {
-        cursor: pointer;
-      }
-    }
-  }
-}
-
-
-a {
-  text-decoration: none;
-  // font-size: 12px;
-  // line-height: 20px;
-  // color: darkgrey;
-}
-a:hover {
-  color: #ffc107;
 }
