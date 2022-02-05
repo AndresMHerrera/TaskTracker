@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export abstract class BaseHttpService {
     constructor(private httpClient: HttpClient, private baseUrl: string) {}
 
-    get(url?: string): Observable<any> {
+    protected get(url?: string): Observable<any> {
         return this.httpClient.get(this.buildUrl(url), {
             headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
         });

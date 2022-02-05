@@ -1,3 +1,4 @@
+import { ProjectsService } from './../../../shared/services/projects/projects.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -10,20 +11,24 @@ import { ProjectModel } from '../../models/project.model';
     styleUrls: ['./projects-page.component.scss'],
 })
 export class ProjectsPageComponent implements OnInit {
-    displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-    dataSource: MatTableDataSource<Project>;
+    displayedColumns: string[] = ['name', 'description', 'open', 'closed', 'total'];
+    pageSizeOptions: number[] = [5, 10, 25, 100];
+    dataSource: MatTableDataSource<ProjectModel> = new MatTableDataSource();
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
-    constructor() {
-
-
-        this.dataSource = new MatTableDataSource(fakeData);
+    constructor(private projectsService: ProjectsService) {
     }
 
     ngOnInit(): void {
-
+        this.projectsService.getProjects().subscribe(
+            (data) => {
+                console.log(data);
+                this.dataSource.data = [];
+                console.log(this.dataSource.filteredData.length);
+            }
+        );
     }
 
     ngAfterViewInit() {
@@ -38,5 +43,9 @@ export class ProjectsPageComponent implements OnInit {
         if (this.dataSource.paginator) {
             this.dataSource.paginator.firstPage();
         }
+    }
+
+    getTableColumnCount(): number {
+        return this.displayedColumns.length;
     }
 }

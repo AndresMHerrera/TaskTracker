@@ -1,3 +1,4 @@
+import { MapperService } from './../mapper/mapper.service';
 import { ProjectModel } from './../../../projects/models/project.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,12 +12,20 @@ import { Injectable } from '@angular/core';
 export class ProjectsService extends BaseHttpService {
 
     constructor(httpClient: HttpClient) {
-        super(httpClient, 'projects');
+        super(httpClient, 'api/projects');
     }
 
     getProjects(): Observable<ProjectModel[]> {
-        return this.get().pipe(map(json => ))
+        return this.get().pipe(map(json => this.deserialize(json) as ProjectModel[]));
     }
 
-
+    // TODO: REMOVE
+    private deserialize(json: any): ProjectModel | ProjectModel[] {
+        if (Array.isArray(json)) {
+            return json.map(item => new ProjectModel(item));
+        }
+        else {
+            return new ProjectModel(json);
+        }
+    }
 }

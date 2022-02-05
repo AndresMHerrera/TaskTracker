@@ -14,10 +14,10 @@ export class InMemoryDataService implements InMemoryDbService {
                 id: 0,
                 name: 'Task Tracker',
                 description: 'A web application for creating and managing project tasks.',
-                metadata: { openTasks: 50, closedTasks: 20, totalTasks: 150 }
+                metadata: { openTasks: 130, closedTasks: 20, totalTasks: 150 }
             }
         ];
 
-        return { }
+        return { projects };
     }
 }
