@@ -1,7 +1,7 @@
+import { ProjectsModule } from './../modules/projects/projects.module';
+import { AuthorizedModule } from './../modules/authorized/authorized.module';
+import { LoginModule } from './../modules/login/login.module';
 import { InMemoryDataService } from './in-memory-data/in-memory-data.service';
-import { ProjectsModule } from './modules/projects/projects.module';
-import { AuthorizedModule } from './modules/authorized/authorized.module';
-import { LoginModule } from './modules/login/login.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 

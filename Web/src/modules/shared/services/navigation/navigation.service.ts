@@ -1,4 +1,3 @@
-import { APP_ROUTES } from './app-routes';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,14 +8,14 @@ export class NavigationService {
     constructor(private router: Router) {}
 
     public gotToSignup(): Promise<boolean> {
-        return this.router.navigate([APP_ROUTES.signup]);
+        return this.router.navigate(['signup']);
     }
 
     public gotToDashboard(): Promise<boolean> {
-        return this.router.navigate([APP_ROUTES.auth + '/' + APP_ROUTES.dashboard]);
+        return this.router.navigate(['auth' + '/' + 'dashboard']);
     }
 
     public goToProjects(): Promise<boolean> {
-        return this.router.navigate([APP_ROUTES.auth + '/' + APP_ROUTES.projects]);
+        return this.router.navigate(['auth' + '/' + 'projects']);
     }
 }
