@@ -1,22 +1,26 @@
+import { AppConfigService } from './../app-config/app-config.service';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 
 export abstract class BaseHttpService {
-    constructor(private httpClient: HttpClient, private baseUrl: string) {}
 
-    protected get(url?: string): Observable<any> {
-        return this.httpClient.get(this.buildUrl(url), {
-            headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-        });
-    }
+  private apiBaseUrl: string;
 
-    private buildUrl(endpoint?: string): string {
-        if (endpoint) {
-            return `${this.baseUrl}\\${endpoint}`;
-        }
-        else {
-            return this.baseUrl;
-        }
-    }
+  constructor(
+    private httpClient: HttpClient,
+    private appConfig: AppConfigService,
+    private endpointUrl: string
+  ) {
+    this.apiBaseUrl = appConfig.getSettings().apiBaseUrl;
+  }
+
+  protected get(url?: string): Observable<any> {
+    return this.httpClient.get(this.buildUrl(), {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
+
+  private buildUrl(): string {
+    return `${this.apiBaseUrl}/${this.endpointUrl}`;
+  }
 }

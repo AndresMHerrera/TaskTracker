@@ -1,3 +1,4 @@
+import { AppConfigService } from './../../../shared/services/app-config/app-config.service';
 import { ProjectsService } from './../../../shared/services/projects/projects.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';

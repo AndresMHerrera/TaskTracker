@@ -1,4 +1,4 @@
-import { MapperService } from './../mapper/mapper.service';
+import { AppConfigService } from './../app-config/app-config.service';
 import { ProjectModel } from './../../../projects/models/project.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -7,25 +7,25 @@ import { BaseHttpService } from './../base/base-http.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class ProjectsService extends BaseHttpService {
+  constructor(httpClient: HttpClient, appConfig: AppConfigService) {
+    super(httpClient, appConfig, 'projects');
+  }
 
-    constructor(httpClient: HttpClient) {
-        super(httpClient, 'api/projects');
-    }
+  getProjects(): Observable<ProjectModel[]> {
+    return this.get().pipe(
+      map((json) => this.deserialize(json) as ProjectModel[])
+    );
+  }
 
-    getProjects(): Observable<ProjectModel[]> {
-        return this.get().pipe(map(json => this.deserialize(json) as ProjectModel[]));
+  // TODO: REMOVE
+  private deserialize(json: any): ProjectModel | ProjectModel[] {
+    if (Array.isArray(json)) {
+      return json.map((item) => new ProjectModel(item));
+    } else {
+      return new ProjectModel(json);
     }
-
-    // TODO: REMOVE
-    private deserialize(json: any): ProjectModel | ProjectModel[] {
-        if (Array.isArray(json)) {
-            return json.map(item => new ProjectModel(item));
-        }
-        else {
-            return new ProjectModel(json);
-        }
-    }
+  }
 }

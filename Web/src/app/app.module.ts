@@ -1,8 +1,9 @@
+import { AppConfigService } from './../modules/shared/services/app-config/app-config.service';
 import { ProjectsModule } from './../modules/projects/projects.module';
 import { AuthorizedModule } from './../modules/authorized/authorized.module';
 import { LoginModule } from './../modules/login/login.module';
 import { InMemoryDataService } from './in-memory-data/in-memory-data.service';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,19 +13,30 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 @NgModule({
-    declarations: [AppComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        LoginModule,
-        AuthorizedModule,
-        ProjectsModule,
-        HttpClientModule,
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    LoginModule,
+    AuthorizedModule,
+    ProjectsModule,
+    HttpClientModule,
 
-        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
-    ],
-    providers: [],
-    bootstrap: [AppComponent],
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { passThruUnknownUrl: true }),
+  ],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      deps: [ AppConfigService ],
+      useFactory: (appConfigService: AppConfigService) => {
+        return () => {
+          return appConfigService.load();
+        }
+      }
+    },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
