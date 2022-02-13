@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { AppConfigModel } from './../../models/app-config.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -13,8 +14,9 @@ export class AppConfigService {
   constructor(private http: HttpClient) {}
 
   load() {
-    // const jsonFile = `assets/config/config.${environment.name}.json`;
-    const jsonFile = `assets/config/config.debug.json`;
+    const jsonFile = environment.configFile;
+
+    console.log('loading config: ', jsonFile);
 
     return this.http.get(jsonFile).pipe(
       map((json: any) => {
