@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { configurationLoader } from './initializers/app-initializer-methods';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,11 +31,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
       provide: APP_INITIALIZER,
       multi: true,
       deps: [ AppConfigService ],
-      useFactory: (appConfigService: AppConfigService) => {
-        return () => {
-          return appConfigService.load();
-        }
-      }
+      useFactory: configurationLoader
     },
   ],
   bootstrap: [AppComponent],
