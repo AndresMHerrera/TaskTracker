@@ -1,6 +1,11 @@
+import { RouterModule } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from './../modules/layout/layout.module';
 import { AppConfigService } from './../modules/shared/services/app-config/app-config.service';
 import { ProjectsModule } from './../modules/projects/projects.module';
-import { AuthorizedModule } from './../modules/authorized/authorized.module';
 import { LoginModule } from './../modules/login/login.module';
 import { InMemoryDataService } from './in-memory-data/in-memory-data.service';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
@@ -20,9 +25,14 @@ import { configurationLoader } from './initializers/app-initializer-methods';
     AppRoutingModule,
     BrowserAnimationsModule,
     LoginModule,
-    AuthorizedModule,
     ProjectsModule,
     HttpClientModule,
+
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatButtonModule,
+    LayoutModule,
 
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { passThruUnknownUrl: true }),
   ],

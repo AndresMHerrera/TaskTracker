@@ -18,6 +18,8 @@ export class InMemoryDataService implements InMemoryDbService {
             }
         ];
 
-        return { projects };
+        const login = { isLoggedIn: true };
+
+        return { projects, login };
     }
 }

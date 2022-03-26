@@ -12,10 +12,14 @@ export class NavigationService {
     }
 
     public gotToDashboard(): Promise<boolean> {
-        return this.router.navigate(['auth' + '/' + 'dashboard']);
+        return this.router.navigate(['dashboard']);
     }
 
     public goToProjects(): Promise<boolean> {
-        return this.router.navigate(['auth' + '/' + 'projects']);
+        return this.router.navigate(['projects']);
+    }
+
+    public goToProjectDetails(id: number): Promise<boolean> {
+      return this.router.navigate([`projects`, id]);
     }
 }

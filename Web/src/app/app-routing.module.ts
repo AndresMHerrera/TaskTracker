@@ -1,6 +1,6 @@
+import { ProjectDetailsPageComponent } from './../modules/projects/pages/project-details-page/project-details-page.component';
 import { ProjectsPageComponent } from './../modules/projects/pages/projects-page/projects-page.component';
 import { DashboardPageComponent } from './../modules/dashboard/dashboard-page/dashboard-page.component';
-import { AuthorizedPageComponent } from './../modules/authorized/pages/authorized-page/authorized-page.component';
 import { SignupPageComponent } from './../modules/signup/pages/signup-page/signup-page.component';
 import { LoginPageComponent } from './../modules/login/pages/login-page/login-page.component';
 import { NgModule } from '@angular/core';
@@ -30,18 +30,21 @@ const routes: Routes = [
         component: SignupPageComponent
     },
     {
-        path: 'auth',
-        component: AuthorizedPageComponent,
-        children: [
-            {
-                path: 'dashboard',
-                component: DashboardPageComponent
-            },
-            {
-                path: 'projects',
-                component: ProjectsPageComponent
-            }
-        ]
+      path: 'dashboard',
+      component: DashboardPageComponent
+    },
+    {
+      path: 'projects',
+      children: [
+        {
+          path: '',
+          component: ProjectsPageComponent
+        },
+        {
+          path: ':id',
+          component: ProjectDetailsPageComponent
+        }
+      ]
     },
     indexRoute,
     fallbackRoute,

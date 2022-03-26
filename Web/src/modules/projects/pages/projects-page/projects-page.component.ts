@@ -1,3 +1,4 @@
+import { NavigationService } from './../../../shared/services/navigation/navigation.service';
 import { AppConfigService } from './../../../shared/services/app-config/app-config.service';
 import { ProjectsService } from './../../../shared/services/projects/projects.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -19,15 +20,14 @@ export class ProjectsPageComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
-    constructor(private projectsService: ProjectsService) {
+    constructor(private projectsService: ProjectsService,
+                private navigationService: NavigationService) {
     }
 
     ngOnInit(): void {
         this.projectsService.getProjects().subscribe(
             (data) => {
-                console.log(data);
-                this.dataSource.data = [];
-                console.log(this.dataSource.filteredData.length);
+                this.dataSource.data = data;
             }
         );
     }
@@ -48,5 +48,9 @@ export class ProjectsPageComponent implements OnInit {
 
     getTableColumnCount(): number {
         return this.displayedColumns.length;
+    }
+
+    onSelectProject(project: ProjectModel): void {
+      this.navigationService.goToProjectDetails(project.id);
     }
 }

@@ -8,19 +8,27 @@ export abstract class BaseHttpService {
 
   constructor(
     private httpClient: HttpClient,
-    private appConfig: AppConfigService,
+    private appConfigService: AppConfigService,
     private endpointUrl: string
   ) {
-    this.apiBaseUrl = appConfig.getSettings().apiBaseUrl;
+    this.apiBaseUrl = this.appConfigService.getSettings().apiBaseUrl;
   }
 
   protected get(url?: string): Observable<any> {
-    return this.httpClient.get(this.buildUrl(), {
+    return this.httpClient.get(this.buildUrl(url), {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     });
   }
 
-  private buildUrl(): string {
-    return `${this.apiBaseUrl}/${this.endpointUrl}`;
+  protected post<T>(url: string, payload: T): Observable<any> {
+    return this.httpClient.post(this.buildUrl(url), payload);
+  }
+
+  private buildUrl(url:string | undefined): string {
+    let result = `${this.apiBaseUrl}/${this.endpointUrl}`;
+    if (url) {
+      result = result + `/${url}`;
+    }
+    return result;
   }
 }
