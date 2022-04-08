@@ -4,6 +4,11 @@ table {
     .no-data-row {
         td { text-align: center; }
     }
+
+    tr:hover.mat-row {
+      background-color: lightblue;
+      cursor: pointer;
+    }
 }
 
 // .mat-form-field {

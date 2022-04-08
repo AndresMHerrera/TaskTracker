@@ -7,50 +7,47 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Route } from '@angular/router';
 
 const indexRoute: Route = {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
+  path: '',
+  redirectTo: 'login',
+  pathMatch: 'full',
 };
 
 const fallbackRoute: Route = {
-    path: '**',
-    redirectTo: 'login'
+  path: '**',
+  redirectTo: 'login',
 };
 
 const routes: Routes = [
-    // ...LoginRouterConfig,
-    // ...SignupRouterConfig,
-    // ...DashboardRouter,
-    {
-        path: 'login',
-        component: LoginPageComponent
-    },
-    {
-        path: 'signup',
-        component: SignupPageComponent
-    },
-    {
-      path: 'dashboard',
-      component: DashboardPageComponent
-    },
-    {
-      path: 'projects',
-      children: [
-        {
-          path: '',
-          component: ProjectsPageComponent
-        },
-        {
-          path: ':id',
-          component: ProjectDetailsPageComponent
-        }
-      ]
-    },
-    indexRoute,
-    fallbackRoute,
+  {
+    path: 'login',
+    component: LoginPageComponent,
+  },
+  {
+    path: 'signup',
+    component: SignupPageComponent,
+  },
+  {
+    path: 'dashboard',
+    component: DashboardPageComponent,
+  },
+  {
+    path: 'projects',
+    children: [
+      {
+        path: '',
+        component: ProjectsPageComponent,
+      },
+      {
+        path: ':id',
+        component: ProjectDetailsPageComponent,
+      },
+    ],
+  },
+  indexRoute,
+  fallbackRoute,
 ];
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

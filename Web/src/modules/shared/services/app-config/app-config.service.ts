@@ -16,8 +16,6 @@ export class AppConfigService {
   load() {
     const jsonFile = environment.configFile;
 
-    console.log('loading config: ', jsonFile);
-
     return this.http.get(jsonFile).pipe(
       map((json: any) => {
         this.settings = new AppConfigModel(json);
