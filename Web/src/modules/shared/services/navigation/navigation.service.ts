@@ -7,6 +7,10 @@ import { Router } from '@angular/router';
 export class NavigationService {
     constructor(private router: Router) {}
 
+  public goToLogin(): Promise<boolean> {
+    return this.router.navigate(['login']);
+  }
+
     public gotToSignup(): Promise<boolean> {
         return this.router.navigate(['signup']);
     }

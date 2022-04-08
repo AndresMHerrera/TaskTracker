@@ -33,7 +33,7 @@ export class LoginService extends BaseHttpService {
   }
 
   logout(): Observable<LoginResponseModel> {
-    return this.get('logout').pipe( // TODO: use POST
+    return this.post('logout', null).pipe( // TODO: use POST
       map((json) => {
         let response = new LoginResponseModel(json);
         this.isLoggedIn$.next(response.isLoggedIn);
@@ -63,7 +63,6 @@ export class LoginService extends BaseHttpService {
     }
 
     authInfo.isLoggedIn = value;
-
     this.localStorageService.save(this.loginKey, authInfo);
   }
 

@@ -16,5 +16,14 @@ namespace Service.Controllers
 
             return Ok(response);
         }
+
+        [HttpPost("logout")]
+        public async Task<ActionResult<LoginResponseDto>> Logout()
+        {
+            var response = new LoginResponseDto();
+            response.IsLoggedIn = false;
+
+            return Ok(response);
+        }
     }
 }
