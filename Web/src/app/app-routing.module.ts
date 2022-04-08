@@ -32,6 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'projects',
+    canActivate: [],
     children: [
       {
         path: '',
